@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="a fragmented dialogue — longing, memory, distance.">
+  <meta name="author" content="anonymous">
+  <meta name="robots" content="index, follow">
+  <title>can you text me back</title>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      color: #000;
+      margin: 0;
+      font-family: system-ui, sans-serif;
+    }
+    #chat {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    span {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 9999px;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .left span {
+      background: #ebebeb;
+    }
+    .right span {
+      background: #2194ff;
+      color: #fff;
+    }
+    .right {
+      text-align: right;
+    }
+    .fade-in {
+      opacity: 1 !important;
+    }
+    #top-gradient, #bottom-gradient {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      height: 24vh;
+      pointer-events: none;
+      z-index: 100;
+      transition: background 1s ease;
+    }
+    #top-gradient {
+      top: 0;
+      background: linear-gradient(0deg, rgba(249, 249, 249, 0.00) 0%, rgba(249, 249, 249, 0.02) 4.7%, rgba(249, 249, 249, 0.04) 8.9%, rgba(249, 249, 249, 0.07) 12.8%, rgba(249, 249, 249, 0.10) 16.56%, rgba(249, 249, 249, 0.14) 20.37%, rgba(249, 249, 249, 0.18) 24.4%, rgba(249, 249, 249, 0.23) 28.83%, rgba(249, 249, 249, 0.29) 33.84%, rgba(249, 249, 249, 0.35) 39.6%, rgba(249, 249, 249, 0.43) 46.3%, rgba(249, 249, 249, 0.52) 54.1%, rgba(249, 249, 249, 0.62) 63.2%, rgba(249, 249, 249, 0.73) 73.76%, rgba(249, 249, 249, 0.86) 85.97%, #F9F9F9 100%);
+    }
+    #bottom-gradient {
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(249, 249, 249, 0.00) 0%, rgba(249, 249, 249, 0.02) 4.7%, rgba(249, 249, 249, 0.04) 8.9%, rgba(249, 249, 249, 0.07) 12.8%, rgba(249, 249, 249, 0.10) 16.56%, rgba(249, 249, 249, 0.14) 20.37%, rgba(249, 249, 249, 0.18) 24.4%, rgba(249, 249, 249, 0.23) 28.83%, rgba(249, 249, 249, 0.29) 33.84%, rgba(249, 249, 249, 0.35) 39.6%, rgba(249, 249, 249, 0.43) 46.3%, rgba(249, 249, 249, 0.52) 54.1%, rgba(249, 249, 249, 0.62) 63.2%, rgba(249, 249, 249, 0.73) 73.76%, rgba(249, 249, 249, 0.86) 85.97%, #F9F9F9 100%);
+    }
+
+    #scroll-hint {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      opacity: 1;
+      transition: opacity 0.4s ease;
+      color: #adadad;
+      z-index: 200;
+      user-select: none;
+      pointer-events: none;
+    }
+    #scroll-hint.fade-out {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="top-gradient"></div>
+  <div id="bottom-gradient"></div>
+  <div id="scroll-hint">scroll</div>
+
+  <div id="chat">
+    <div style="height:26vh"></div>
+    <div class="left" style="margin-bottom:-20px"><span>no</span></div>
+    <div class="right"><span>but why?</span></div>
+    <div class="left"><span>we’re different now</span></div>
+    <div class="right"><span>we’ve always been different</span></div>
+    <div class="left"><span>not like this</span></div>
+    <div class="right"><span>then what's changed?</span></div>
+    <div style="height:24vh"></div>
+    <div class="right"><span>do you still think of me?</span></div>
+    <div class="left"><span>always</span></div>
+    <div class="right"><span>i never stopped</span></div>
+    <div class="left"><span>don’t say that</span></div>
+    <div class="right"><span>then who am i saying it to</span></div>
+    <div style="height:24vh"></div>
+    <div class="right"><span>i didn’t mean to go</span></div>
+    <div class="left"><span>you didn’t have to mean it</span></div>
+    <div class="right"><span>i miss your voice</span></div>
+    <div class="left"><span>that’s not me anymore</span></div>
+    <div class="right"><span>then who are you</span></div>
+    <div class="left"><span>a memory</span></div>
+    <div style="height:24vh"></div>
+    <div class="right"><span>where did we go wrong</span></div>
+    <div class="left"><span>we didn't</span></div>
+    <div class="right"><span>then why does it feel unfinished</span></div>
+    <div class="left" style="margin-bottom:-10px"><span>because it is</span></div>
+    <div class="left"><span>and that's okay</span></div>
+    <div style="height:24vh"></div>
+    <div class="right"><span>do you ever wish it was different</span></div>
+    <div class="left"><span>all the time</span></div>
+    <div class="right"><span>then why</span></div>
+    <div class="left"><span>i only slow you down</span></div>
+    <div style="height:24vh"></div>
+    <div class="right"><span>i keep your number saved</span></div>
+    <div class="left"><span>still?</span></div>
+    <div class="right"><span>in case yesterday comes</span></div>
+    <div style="height:24vh"></div>
+    <div class="right"><span>i love you</span></div>
+    <div class="left"><span>i know</span></div>
+    <div style="height:24vh"></div>
+    <div class="right"><span>you still there</span></div>
+    <div class="left"><span>always</span></div>
+    <div class="right"><span>no really</span></div>
+    <div class="left"><span>always</span></div>
+    <div style="height:24vh"></div>
+    <div class="right"><span>i see you in my dreams</span></div>
+    <div class="left"><span>that’s me saying hi</span></div>
+    <div class="right"><span>don’t leave too soon</span></div>
+    <div class="left"><span>i won’t</span></div>
+    <div class="right"><span>promise?</span></div>
+    <div class="left"><span>promise</span></div>
+    <div style="height:24vh"></div>
+    <div class="left"><span>i love you too</span></div>
+    <div class="right" style="margin-bottom:-10px"><span>...</span></div>
+    <div class="right"><span>i know</span></div>
+    <div style="height:36vh"></div>
+  </div>
+
+  <script>
+    // fade-in chat bubbles on scroll
+    const bubbles = document.querySelectorAll('#chat span');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: "-25% 0px -25% 0px",
+      threshold: 0.0
+    });
+    bubbles.forEach(b => observer.observe(b));
+
+    // scroll hint fade out on first scroll
+    const hint = document.getElementById('scroll-hint');
+    let faded = false;
+    window.addEventListener('scroll', () => {
+      if (!faded && window.scrollY > 60) {
+        hint.classList.add('fade-out');
+        faded = true;
+      }
+    });
+  </script>
+</body>
+</html>
